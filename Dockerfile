@@ -23,6 +23,7 @@ RUN set -xe \
         less \
         nodejs \
         yarn \
+	rsync \
     && curl -sS https://getcomposer.org/installer | php -- \
             --filename=composer \
             --install-dir=/usr/local/bin \
@@ -31,7 +32,7 @@ RUN set -xe \
     && wget https://psysh.org/psysh \
     && chmod +x psysh \
     && mv psysh /usr/local/bin \
-    && rm /var/cache/apk/*
+    && yarn global add pm2
 
 WORKDIR /var/www
 
