@@ -32,7 +32,7 @@ RUN set -xe \
     && mv psysh /usr/local/bin
 
 RUN apk -Uuv add groff less python py-pip; \
-  pip install awscli; \
+  pip install awscli s3cmd python-magic; \
   apk --purge -v del py-pip; \
   rm /var/cache/apk/*
 
