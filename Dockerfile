@@ -98,9 +98,8 @@ RUN addgroup -g 1000 node \
     && ln -s /opt/yarn-v$YARN_VERSION/bin/yarn /usr/local/bin/yarn \
     && ln -s /opt/yarn-v$YARN_VERSION/bin/yarnpkg /usr/local/bin/yarnpkg \
     && rm yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz \
-    && apk del .build-deps \
-    && rm /var/cache/apk/*
-    
+    && apk del .build-deps 
+
 WORKDIR /var/www
 
 ENTRYPOINT [ "bash" ]
