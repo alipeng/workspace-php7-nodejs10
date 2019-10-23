@@ -28,13 +28,13 @@ RUN set -xe \
     && curl -sS https://getcomposer.org/installer | php -- \
             --filename=composer \
             --install-dir=/usr/local/bin \
-    &&  composer clear-cache \
+    && composer clear-cache \
     && cp -rf /usr/share/zoneinfo/$TZ /etc/localtime \
     && wget https://psysh.org/psysh \
     && chmod +x psysh \
     && mv psysh /usr/local/bin \
     && pip install awscli s3cmd python-magic \
-    && apk --purge -v del py-pip; \
+    && apk --purge -v del py-pip \
     && rm /var/cache/apk/*
 
 ENV NODE_VERSION 12.13.0
