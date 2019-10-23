@@ -22,6 +22,9 @@ RUN set -xe \
         tzdata \
         less \
 	      rsync \
+        groff \
+        python \
+        py-pip \
     && curl -sS https://getcomposer.org/installer | php -- \
             --filename=composer \
             --install-dir=/usr/local/bin \
@@ -29,12 +32,10 @@ RUN set -xe \
     && cp -rf /usr/share/zoneinfo/$TZ /etc/localtime \
     && wget https://psysh.org/psysh \
     && chmod +x psysh \
-    && mv psysh /usr/local/bin
-
-RUN apk -Uuv add groff less python py-pip; \
-  pip install awscli s3cmd python-magic; \
-  apk --purge -v del py-pip; \
-  rm /var/cache/apk/*
+    && mv psysh /usr/local/bin \
+    && pip install awscli s3cmd python-magic \
+    && apk --purge -v del py-pip; \
+    && rm /var/cache/apk/*
 
 ENV NODE_VERSION 12.13.0
 ENV YARN_VERSION 1.19.1
