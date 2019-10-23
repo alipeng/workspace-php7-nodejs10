@@ -34,8 +34,7 @@ RUN set -xe \
     && chmod +x psysh \
     && mv psysh /usr/local/bin \
     && pip install awscli s3cmd python-magic \
-    && apk --purge -v del py-pip \
-    && rm /var/cache/apk/*
+    && apk --purge -v del py-pip 
 
 ENV NODE_VERSION 12.13.0
 ENV YARN_VERSION 1.19.1
